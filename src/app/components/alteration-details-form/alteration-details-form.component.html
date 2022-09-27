@@ -1,0 +1,146 @@
+<mat-card class="my-3">
+  <form [formGroup]="form">
+<!--  <mat-card-title>-->
+    <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutAlign.gt-sm="space-between start" fxLayoutGap="0.5rem">
+      <h2 class="mat-h2 text-dark-blue w-100">ALTERATION DETAILS</h2>
+      <mat-form-field ngClass.gt-sm="w-50" ngClass.lt-md="w-100">
+        <mat-label>Date Required</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dateRequired" readonly required (click)="picker.open()">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="formControls['dateRequired'].invalid && formControls['dateRequired'].errors['required']">
+          Date is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+<!--  </mat-card-title>-->
+  <div class="m-2">
+    <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap.gt-sm="1rem" fxLayoutGap.lt-md="0.5rem" class="my-2">
+      <div fxLayout="column" class="w-100">
+        <mat-checkbox class="w-100" formControlName="addressChange" color="primary">Address Change</mat-checkbox>
+        <app-alteration-remarks #addressChangeRemarks
+          *ngIf="!!formControls['addressChange'].value" [isReason]="true"></app-alteration-remarks>
+      </div>
+
+      <div fxLayout="column" class="w-100">
+        <mat-checkbox class="w-100" formControlName="billLedgerCopy" color="primary">Bill / Ledger Copy</mat-checkbox>
+        <app-alteration-remarks #billLedgerCopyRemarks
+          *ngIf="!!formControls['billLedgerCopy'].value"></app-alteration-remarks>
+      </div>
+    </div>
+
+    <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap.gt-sm="1rem" fxLayoutGap.lt-md="0.5rem" class="my-2">
+      <div fxLayout="column" class="w-100">
+        <mat-checkbox class="w-100" formControlName="detailedBillIncoming" color="primary">Detailed Bill (Incoming)</mat-checkbox>
+        <app-alteration-remarks #detailedBillIncomingRemarks
+          *ngIf="!!formControls['detailedBillIncoming'].value"></app-alteration-remarks>
+      </div>
+
+      <div fxLayout="column" class="w-100">
+        <mat-checkbox class="w-100" formControlName="detailedBillOutgoing" color="primary">Detailed Bill (Outgoing)</mat-checkbox>
+        <app-alteration-remarks #detailedBillOutgoingRemarks
+          *ngIf="!!formControls['detailedBillOutgoing'].value"></app-alteration-remarks>
+      </div>
+    </div>
+
+    <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap.gt-sm="1rem" fxLayoutGap.lt-md="0.5rem" class="my-2">
+      <div fxLayout="column" class="w-100">
+        <mat-checkbox class="w-100" formControlName="idd" color="primary">IDD</mat-checkbox>
+        <app-alteration-remarks #iddRemarks
+          *ngIf="!!formControls['idd'].value" [isIDD]="true"></app-alteration-remarks>
+      </div>
+
+      <div fxLayout="column" class="w-100">
+        <mat-checkbox class="w-100" formControlName="imsiChange" color="primary">IMSI Change</mat-checkbox>
+        <app-alteration-remarks #imsiChangeRemarks
+          *ngIf="!!formControls['imsiChange'].value" [isSIMNumber]="true"></app-alteration-remarks>
+      </div>
+    </div>
+
+    <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap.gt-sm="1rem" fxLayoutGap.lt-md="0.5rem" class="my-2">
+      <div fxLayout="column" class="w-100">
+        <mat-checkbox class="w-100" formControlName="packageChange" color="primary">Package Change</mat-checkbox>
+        <app-alteration-remarks #packageChangeRemarks
+          *ngIf="!!formControls['packageChange'].value" [isNewPackage]="true"></app-alteration-remarks>
+      </div>
+
+      <div fxLayout="column" class="w-100">
+        <mat-checkbox class="w-100" formControlName="reconnectionOfService" color="primary">Reconnection of Service</mat-checkbox>
+        <app-alteration-remarks #reconnectionOfServiceRemarks
+          *ngIf="!!formControls['reconnectionOfService'].value"></app-alteration-remarks>
+      </div>
+    </div>
+
+    <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap.gt-sm="1rem" fxLayoutGap.lt-md="0.5rem" class="my-2">
+      <div fxLayout="column" class="w-100">
+        <mat-checkbox class="w-100" formControlName="temporarySuspension" color="primary">
+          <span class="text-wrap">Temporary Suspension</span>
+        </mat-checkbox>
+        <app-alteration-remarks #temporarySuspensionRemarks
+                                *ngIf="!!formControls['temporarySuspension'].value"></app-alteration-remarks>
+      </div>
+
+      <div fxLayout="column" class="w-100">
+        <mat-checkbox class="w-100" formControlName="roaming" color="primary">
+          <span class="text-wrap">Roaming</span>
+        </mat-checkbox>
+        <app-alteration-remarks #roamingRemarks [isRoaming]="true"
+                                *ngIf="!!formControls['roaming'].value"></app-alteration-remarks>
+      </div>
+    </div>
+
+    <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap.gt-sm="1rem" fxLayoutGap.lt-md="0.5rem" class="my-2">
+      <div fxLayout="column" class="w-100">
+        <mat-checkbox class="w-100" formControlName="vas" color="primary">
+          <span class="text-wrap">VAS - Add/Remove & other add-on features</span>
+        </mat-checkbox>
+        <app-alteration-remarks #vasRemarks
+          *ngIf="!!formControls['vas'].value"></app-alteration-remarks>
+      </div>
+
+      <div fxLayout="column" class="w-100">
+        <mat-checkbox class="w-100" formControlName="requestToDisconnect" color="primary">
+          <span class="text-wrap">Request to disconnect only Outgoing</span>
+        </mat-checkbox>
+        <app-alteration-remarks #requestToDisconnectRemarks
+          *ngIf="!!formControls['requestToDisconnect'].value"></app-alteration-remarks>
+      </div>
+    </div>
+
+    <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap.gt-sm="1rem" fxLayoutGap.lt-md="0.5rem" class="my-2">
+      <div fxLayout="column" class="w-100">
+        <mat-checkbox class="w-100" formControlName="requestToChangeNumber" color="primary">Request to Change Number</mat-checkbox>
+        <app-alteration-remarks #requestToChangeNumberRemarks
+          *ngIf="!!formControls['requestToChangeNumber'].value"></app-alteration-remarks>
+      </div>
+
+      <div fxLayout="column" class="w-100">
+        <mat-checkbox class="w-100" formControlName="requestToActivateData" color="primary">
+          <span class="text-wrap">Request to activate data add-on/add hoc service</span>
+        </mat-checkbox>
+        <app-alteration-remarks #requestToActivateDataRemarks
+          *ngIf="!!formControls['requestToActivateData'].value"></app-alteration-remarks>
+      </div>
+    </div>
+
+    <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap.gt-sm="1rem" fxLayoutGap.lt-md="0.5rem" class="my-2">
+      <div fxLayout="column" class="w-100">
+        <mat-checkbox class="w-100" formControlName="cancellationOfService" color="primary">
+          <span class="text-wrap">Cancellation of Service (I acknowledge that upon disconnection of this service, the said service number will be recycled & re-issued to other Mobitel subscriber)</span>
+        </mat-checkbox>
+        <app-alteration-remarks #cancellationOfServiceRemarks
+          *ngIf="!!formControls['cancellationOfService'].value"></app-alteration-remarks>
+      </div>
+    </div>
+
+    <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap.gt-sm="1rem" fxLayoutGap.lt-md="0.5rem" class="my-2">
+      <div fxLayout="column" class="w-100">
+        <mat-checkbox class="w-100" formControlName="other" color="primary">Other</mat-checkbox>
+        <app-alteration-remarks #otherRemarks
+          *ngIf="!!formControls['other'].value"></app-alteration-remarks>
+      </div>
+    </div>
+  </div>
+  </form>
+</mat-card>
+

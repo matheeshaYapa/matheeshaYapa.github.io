@@ -1,0 +1,69 @@
+<div class="m-2">
+  <form [formGroup]="form">
+
+    <div *ngIf="isIDD"
+      fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap.gt-sm="1rem" fxLayoutGap.lt-md="0.25rem">
+      <mat-radio-group formControlName="activationOrDeactivation" color="primary">
+        <mat-radio-button value="activation" class="me-3">Activation</mat-radio-button>
+        <mat-radio-button value="deactivation">Deactivation</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div *ngIf="isRoaming"
+      fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap.gt-sm="1rem" fxLayoutGap.lt-md="0.25rem">
+      <mat-checkbox class="w-100" formControlName="roamingVoice" color="primary">Voice</mat-checkbox>
+      <mat-checkbox class="w-100" formControlName="roamingSMS" color="primary">SMS</mat-checkbox>
+    </div>
+
+    <div *ngIf="isSIMNumber"
+         fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap.gt-sm="1rem" fxLayoutGap.lt-md="0.25rem">
+      <mat-radio-group formControlName="simOption" color="primary">
+        <mat-radio-button value="migration" class="me-3">3G to 4G Migration</mat-radio-button>
+        <mat-radio-button value="replacement">SIM Replacement</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div *ngIf="isSIMNumber"
+      fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap.gt-sm="1rem" fxLayoutGap.lt-md="0.25rem">
+      <mat-form-field class="w-100">
+        <mat-label>SIM No.</mat-label>
+        <input matInput formControlName="simNo">
+        <mat-error *ngIf="formControls['simNo'].invalid && formControls['simNo'].errors['required']">
+          SIM No. is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="isNewPackage"
+      fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap.gt-sm="1rem" fxLayoutGap.lt-md="0.25rem">
+      <mat-form-field class="w-100">
+        <mat-label>New Package</mat-label>
+        <input matInput formControlName="newPackage">
+        <mat-error *ngIf="formControls['newPackage'].invalid && formControls['newPackage'].errors['required']">
+          New Package is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="isReason"
+      fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap.gt-sm="1rem" fxLayoutGap.lt-md="0.25rem">
+      <mat-form-field class="w-100">
+        <mat-label>Reason</mat-label>
+        <textarea matInput formControlName="reason" rows="2"></textarea>
+        <mat-error *ngIf="formControls['reason'].invalid && formControls['reason'].errors['required']">
+          Reason is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap.gt-sm="1rem" fxLayoutGap.lt-md="0.25rem">
+      <mat-form-field class="w-100">
+        <mat-label>Remarks</mat-label>
+        <textarea matInput formControlName="remarks" rows="2"></textarea>
+        <mat-error *ngIf="formControls['remarks'].invalid && formControls['remarks'].errors['required']">
+          Remarks is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</div>

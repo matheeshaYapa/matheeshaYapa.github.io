@@ -1,0 +1,58 @@
+<mat-card class="my-3">
+  <mat-card-title>
+    <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutAlign.gt-sm="start center" fxLayoutGap="0.5rem">
+      <h3 class="mat-h3 text-dark-blue">
+        I request the above alteration to my Mobitel Service. I've also read and understood the charges applicable against
+        the services required and abide by all terms and conditions set by Mobitel from time to time.
+      </h3>
+    </div>
+  </mat-card-title>
+  <div class="m-2">
+    <form [formGroup]="form">
+      <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap.gt-sm="1rem" fxLayoutGap.lt-md="0.25rem">
+        <div fxLayout="column" [fxLayoutGap.gt-sm]="signedImage ? '0.1rem' : '1.6rem'" fxLayoutGap.lt-md="0.25rem" class="w-100">
+          <div fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start start" fxLayout.lt-md="column" fxLayoutGap="0.25rem" class="w-100">
+            <button mat-raised-button color="primary" [ngClass.gt-md]="'w-25'" [ngClass.gt-sm]="'w-50'" type="button"
+            (click)="onSignatureClick()">
+              Customer Signature
+            </button>
+            <div *ngIf="signedImage" fxLayout="column" fxLayoutAlign="center center">
+              <img src="{{signedImage}}" alt="Signed Image" height="50%" width="50%" class="signed-image">
+              <mat-hint>Signed Image</mat-hint>
+            </div>
+          </div>
+
+          <mat-form-field class="w-100">
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="signatureDate" required readonly (click)="picker1.open()">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+            <mat-error *ngIf="formControls['signatureDate'].invalid && formControls['signatureDate'].errors['required']">
+              Date is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayoutGap="0.25rem" class="w-100">
+          <mat-form-field class="w-100">
+            <mat-label>Dealer / CSE</mat-label>
+            <input matInput formControlName="dealerCSE" required>
+            <mat-error *ngIf="formControls['dealerCSE'].invalid && formControls['dealerCSE'].errors['required']">
+              Dealer / CSE is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="w-100">
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="picker2" formControlName="dealerCSEDate" readonly required (click)="picker2.open()">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+            <mat-error *ngIf="formControls['dealerCSEDate'].invalid && formControls['dealerCSEDate'].errors['required']">
+              Date is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </div>
+</mat-card>

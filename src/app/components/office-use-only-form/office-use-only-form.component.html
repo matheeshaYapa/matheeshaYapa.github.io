@@ -1,0 +1,25 @@
+<mat-card>
+  <mat-card-title>
+    <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutAlign.gt-sm="start center" fxLayoutGap="0.5rem">
+      <h2 class="mat-h2 text-dark-blue">OFFICE USE ONLY</h2>
+    </div>
+  </mat-card-title>
+  <div class="m-2">
+    <form [formGroup]="form">
+      <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap.gt-sm="1rem" fxLayoutGap.lt-md="0.5rem">
+        <mat-checkbox class="w-100" formControlName="originalNICSeen" color="primary">Original NIC/DL/PPT Seen</mat-checkbox>
+        <mat-checkbox class="w-100" formControlName="signatureImageVerified" color="primary">Signature / Image Verified</mat-checkbox>
+      </div>
+
+      <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap.gt-sm="1rem" fxLayoutGap.lt-md="0.25rem">
+        <mat-form-field class="w-100">
+          <mat-label>Voucher / Receipt Number</mat-label>
+          <input matInput formControlName="voucherReceiptNumber">
+          <mat-error *ngIf="formControls['voucherReceiptNumber'].invalid && formControls['voucherReceiptNumber'].errors['required']">
+            Voucher / Receipt Number is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+</mat-card>
