@@ -1,0 +1,60 @@
+<mat-card>
+  <mat-card-title>
+    <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutAlign.gt-sm="start center" fxLayoutGap="0.5rem">
+      <h2 class="mat-h2 text-dark-blue">CUSTOMER DETAILS</h2>
+      <h3 class="mat-h3 text-dark-blue">(must be same as per the original application)</h3>
+    </div>
+  </mat-card-title>
+  <div class="m-2">
+    <form [formGroup]="form">
+      <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap.gt-sm="1rem" fxLayoutGap.lt-md="0.25rem">
+        <mat-form-field class="w-100">
+          <mat-label>Customer/Company Name</mat-label>
+          <input matInput formControlName="customerOrCompanyName">
+        </mat-form-field>
+      </div>
+
+      <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap.gt-sm="1rem" fxLayoutGap.lt-md="0.25rem">
+        <mat-form-field class="w-100">
+          <mat-label>Contact Number</mat-label>
+          <input matInput formControlName="contactNumber">
+          <mat-error *ngIf="formControls['contactNumber'].invalid && formControls['contactNumber'].errors['pattern']">
+            Contact Number is invalid
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+          <mat-label>Email Address</mat-label>
+          <input matInput formControlName="email">
+          <mat-error *ngIf="formControls['email'].invalid && formControls['email'].errors['email']">
+            Email Address is invalid
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap.gt-sm="1rem" fxLayoutGap.lt-md="0.25rem">
+        <mat-form-field class="w-100">
+          <mat-label>Mobitel Number</mat-label>
+          <input matInput formControlName="mobitelNumber" required>
+          <mat-error *ngIf="formControls['mobitelNumber'].invalid && formControls['mobitelNumber'].errors['required']">
+            Mobitel Number is required
+          </mat-error>
+          <mat-error *ngIf="formControls['mobitelNumber'].invalid && formControls['mobitelNumber'].errors['pattern']">
+            Mobitel Number is invalid
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+          <mat-label>Account Number</mat-label>
+          <input matInput formControlName="accountNumber" required>
+          <mat-error *ngIf="formControls['accountNumber'].invalid && formControls['accountNumber'].errors['required']">
+            Account Number is required
+          </mat-error>
+          <mat-error *ngIf="formControls['accountNumber'].invalid && formControls['accountNumber'].errors['pattern']">
+            Account Number is invalid
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+</mat-card>

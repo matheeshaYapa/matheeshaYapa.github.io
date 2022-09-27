@@ -1,0 +1,28 @@
+<div class="my-3 mx-4">
+  <ng-container>
+    <app-customer-details-form></app-customer-details-form>
+  </ng-container>
+
+  <ng-container>
+    <app-alteration-details-form></app-alteration-details-form>
+  </ng-container>
+
+  <ng-container>
+    <app-signature-form></app-signature-form>
+  </ng-container>
+
+  <ng-container>
+    <app-office-use-only-form></app-office-use-only-form>
+  </ng-container>
+
+  <ng-container>
+    <app-action-buttons
+      (resetClick)="onResetClick()"
+      (submitClick)="onSubmitClick()">
+    </app-action-buttons>
+  </ng-container>
+</div>
+
+<div id="pdfTemplate" #pdfTemplate *ngIf="submittedData">
+  <app-pdf-template [templateData]="submittedData"></app-pdf-template>
+</div>

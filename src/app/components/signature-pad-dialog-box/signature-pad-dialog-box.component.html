@@ -1,0 +1,14 @@
+<div class="m-1">
+  <div fxLayout="column" fxLayoutAlign="start center">
+    <h2 class="mat-h2 text-dark-blue">Sign your signature</h2>
+  </div>
+
+  <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="0.5rem" class="w-100">
+    <canvas #canvas></canvas>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="1rem" class="w-100 mt-3">
+    <button type="button" mat-raised-button color="primary" (click)="onSavePad()">Submit</button>
+    <button type="button" mat-raised-button color="warn" (click)="onClearPad()">Clear</button>
+  </div>
+</div>
